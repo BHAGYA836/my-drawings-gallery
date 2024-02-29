@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Drawings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            background-image: url('https://images.unsplash.com/photo-1510557880182-3d4d3cba35f1');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        .upload-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background-color: #ff6f61;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .upload-btn:hover {
+            background-color: #ff4f42;
+        }
+        .drawing-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .drawing {
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .drawing:hover {
+            transform: scale(1.05);
+        }
+        .social-icons {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        .social-icons a {
+            color: #333333;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .quote {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #333333;
+        }
+        .email {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <h1>My Drawings</h1>
+            <div class="quote">
+                "Art enables us to find ourselves and lose ourselves at the same time." - Thomas Merton
+            </div>
+            <button class="upload-btn" onclick="document.getElementById('file-input').click();">Upload Drawing</button>
+            <input type="file" id="file-input" style="display: none;">
+            <div class="drawing-container" id="drawing-container"></div>
+            
+            <div class="social-icons">
+                <a href="https://www.instagram.com/myworldart.2022/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:baghyalekshmi3@gmail.com"><i class="far fa-envelope"></i></a>
+                <!-- Replace the following URL with your Facebook profile URL -->
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            
+            <div class="email">
+                Contact me at: <a href="mailto:baghyalekshmi3@gmail.com">baghyalekshmi3@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function() {
+                const img = document.createElement('img');
+                img.src = reader.result;
+                img.classList.add('drawing');
+                document.getElementById('drawing-container').appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
